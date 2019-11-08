@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleTracking.Vehicle.API
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleTracking.VehicleConnection.API.IntegrationTesting", "VehicleTracking.VehicleConnection.API.IntegrationTesting\VehicleTracking.VehicleConnection.API.IntegrationTesting.csproj", "{C4AF4FF8-2D60-4F14-88EF-C5A003103DFC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VehiclePing", "VehiclePing", "{7B61844C-F3A4-44C8-AB03-32DA71D8FAB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleTracking.VehiclePing.API", "VehicleTracking.VehiclePing.API\VehicleTracking.VehiclePing.API.csproj", "{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,10 @@ Global
 		{C4AF4FF8-2D60-4F14-88EF-C5A003103DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4AF4FF8-2D60-4F14-88EF-C5A003103DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4AF4FF8-2D60-4F14-88EF-C5A003103DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +124,8 @@ Global
 		{36875586-17CC-4400-A99C-6DB45CC6BA2D} = {DA5B0818-B65D-4081-A546-5D99E0DF245A}
 		{B29D3406-D227-46A8-B4F0-00B78D253589} = {40D23C90-C653-4EF5-BD7C-9DFE85554CD3}
 		{C4AF4FF8-2D60-4F14-88EF-C5A003103DFC} = {9E58372C-4BE2-47D6-AC90-55DE593BDED5}
+		{7B61844C-F3A4-44C8-AB03-32DA71D8FAB9} = {A709E415-AF41-47D5-8D6B-262B57DC274A}
+		{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2} = {7B61844C-F3A4-44C8-AB03-32DA71D8FAB9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D963AC7-AA8D-4C28-B4E2-DCD44BB01C01}
