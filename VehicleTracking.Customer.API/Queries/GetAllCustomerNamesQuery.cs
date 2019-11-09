@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VehicleTracking.Customer.API.ViewModels;
+using MediatR;
 
 namespace VehicleTracking.Customer.API.Queries
 {
-    public class GetAllCustomerNamesResult
+    public class GetAllCustomerNamesQuery: IRequest<GetAllCustomerNamesQueryResult>
     {
-        public List<CustomerNameViewModel> CustomerNames { get; set; }
     }
 }

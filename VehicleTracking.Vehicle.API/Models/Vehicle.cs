@@ -11,6 +11,6 @@ namespace VehicleTracking.Vehicle.API.Models
         public int CustomerId { get; set; }
         public string VehicleNumber { get; set; }
         public string RegNumber { get; set; }
-        public bool IsConnected { get; set; }
+       
     }
 }

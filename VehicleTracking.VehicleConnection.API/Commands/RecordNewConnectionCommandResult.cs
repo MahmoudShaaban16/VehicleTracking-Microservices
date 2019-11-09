@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VehicleTracking.Customer.API.Queries
+namespace VehicleTracking.VehicleConnection.API.Commands
 {
-    public class GetAllCustomerNames
+    public class RecordNewConnectionCommandResult
     {
     }
 }

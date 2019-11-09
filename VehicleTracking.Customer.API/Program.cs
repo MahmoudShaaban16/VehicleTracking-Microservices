@@ -25,15 +25,13 @@ namespace VehicleTracking.Customer.API
         {
             var configuration = GetConfiguration();
 
-            Log.Logger = CreateSerilogLogger(configuration);
+          
 
             try
             {
-                Log.Information("Configuring web host ({ApplicationContext})...", AppName);
-                var host = BuildWebHost(configuration, args);
+                 var host = BuildWebHost(configuration, args);
 
-                Log.Information("Applying migrations ({ApplicationContext})...", AppName);
-
+                
                 host.MigrateDbContext<CustomerContext>((context, services) =>
                 {
                     var logger = (ILogger<CustomerContextSeed>)services.GetService(typeof(ILogger<CustomerContextSeed>));
@@ -43,15 +41,14 @@ namespace VehicleTracking.Customer.API
                 });
               
 
-                Log.Information("Starting web host ({ApplicationContext})...", AppName);
+                
                 host.Run();
 
                 return 0;
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Program terminated unexpectedly ({ApplicationContext})!", AppName);
-                return 1;
+                throw;
             }
             finally
             {
@@ -66,23 +63,10 @@ namespace VehicleTracking.Customer.API
                 .UseApplicationInsights()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseConfiguration(configuration)
-                .UseSerilog()
+                
                 .Build();
 
-        private static Serilog.ILogger CreateSerilogLogger(IConfiguration configuration)
-        {
-            var seqServerUrl = configuration["Serilog:SeqServerUrl"];
-            var logstashUrl = configuration["Serilog:LogstashgUrl"];
-            return new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.WithProperty("ApplicationContext", AppName)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .WriteTo.Seq(string.IsNullOrWhiteSpace(seqServerUrl) ? "http://seq" : seqServerUrl)
-                .WriteTo.Http(string.IsNullOrWhiteSpace(logstashUrl) ? "http://logstash:8080" : logstashUrl)
-                .ReadFrom.Configuration(configuration)
-                .CreateLogger();
-        }
+       
 
         private static IConfiguration GetConfiguration()
         {

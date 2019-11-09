@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Hosting;
 
 namespace VehicleTracking.Core.Services
 {
     public interface IServiceHost
     {
+        IWebHost Webhost { get; }
         void Run();
     }
 }

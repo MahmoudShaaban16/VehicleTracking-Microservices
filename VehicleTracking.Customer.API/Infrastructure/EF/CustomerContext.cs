@@ -11,14 +11,13 @@ namespace VehicleTracking.Customer.API.Infrastructure.EF
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
         {
         }
-        public DbSet<Models.Customer> CatalogItems { get; set; }
+        public DbSet<Models.Customer> Customers { get; set; }
        
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Models.Customer>().HasKey(e=>e.Id);
-            builder.Entity<Models.Customer>().Property(e=>e.Id).ForSqlServerUseSequenceHiLo("customer_hilo")
-               .IsRequired();
+            builder.Entity<Models.Customer>().Property(e => e.Id).UseSqlServerIdentityColumn();
         }
     }
 }

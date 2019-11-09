@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using RawRabbit;
 using VehicleTracking.Core.IntegrationEvents;
-using VehicleTracking.Core.RabbitMQ;
 
 namespace VehicleTracking.Core.Services
 {
@@ -18,7 +11,7 @@ namespace VehicleTracking.Core.Services
     public class ServiceHost : IServiceHost
     {
         private readonly IWebHost _webHost;
-
+        public IWebHost Webhost { get { return _webHost; } }
         public ServiceHost(IWebHost webHost)
         {
             _webHost = webHost;
@@ -48,7 +41,7 @@ namespace VehicleTracking.Core.Services
         {
             private readonly IWebHost _webHost;
             private IBusClient _bus;
-
+           
             public HostBuilder(IWebHost webHost)
             {
                 _webHost = webHost;
@@ -70,29 +63,29 @@ namespace VehicleTracking.Core.Services
 
         public class BusBuilder : BuilderBase
         {
-            private readonly IWebHost _webHost;
-            private IBusClient _bus;
+            public IWebHost WebHost { get; set; }
+            public IBusClient BusClient { get; set; }
 
             public BusBuilder(IWebHost webHost, IBusClient bus)
             {
-                _webHost = webHost;
-                _bus = bus;
+                WebHost = webHost;
+                BusClient = bus;
             }
 
 
 
             public BusBuilder SubscribeToEvent<TEvent>() where TEvent : IEvent
             {
-                var handler = (IEventHandler<TEvent>)_webHost.Services
+                var handler = (IEventHandler<TEvent>)WebHost.Services
                     .GetService(typeof(IEventHandler<TEvent>));
-                _bus.WithEventHandlerAsync(handler);
+                BusClient.WithEventHandlerAsync(handler);
 
                 return this;
             }
 
             public override ServiceHost Build()
             {
-                return new ServiceHost(_webHost);
+                return new ServiceHost(WebHost);
             }
         }
     }

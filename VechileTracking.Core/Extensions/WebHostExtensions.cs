@@ -3,8 +3,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -13,11 +11,26 @@ using RawRabbit.Instantiation;
 using RawRabbit.Pipe;
 using VehicleTracking.Core.IntegrationEvents;
 using VehicleTracking.Core.RabbitMQ;
+using static VehicleTracking.Core.Services.ServiceHost;
 
 namespace VehicleTracking.Core
 {
-    public static class Extensions
+    public static class WebHostExtensions
     {
+        public static BusBuilder  UseRabbitMq(this IWebHost webHost)
+        {
+           var _bus = (IBusClient)webHost.Services.GetService(typeof(IBusClient));
+
+            return new BusBuilder(webHost, _bus);
+        }
+        public static IWebHost  SubscribeToEvent<TEvent>(this BusBuilder busBuilder) where TEvent : IEvent
+        {
+            var handler = (IEventHandler<TEvent>)busBuilder.WebHost.Services
+                .GetService(typeof(IEventHandler<TEvent>));
+            busBuilder.BusClient.WithEventHandlerAsync(handler);
+
+            return busBuilder.Build().Webhost;
+        }
         public static IWebHost MigrateDbContext<TContext>(this IWebHost webHost, Action<TContext, IServiceProvider> seeder) where TContext : DbContext
         {
 
@@ -31,7 +44,7 @@ namespace VehicleTracking.Core
 
                 try
                 {
-                    logger.LogInformation("Migrating database associated with context {DbContextName}", typeof(TContext).Name);
+                    logger.LogInformation("Migrating database associated with the context {DbContextName}", typeof(TContext).Name);
 
 
                     InvokeSeeder(seeder, context, services);
@@ -52,7 +65,7 @@ namespace VehicleTracking.Core
             where TContext : DbContext
         {
             
-            //context.Database.Migrate();
+            context.Database.Migrate();
             seeder(context, services);
         }
 
