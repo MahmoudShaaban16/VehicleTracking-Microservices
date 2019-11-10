@@ -10,11 +10,11 @@
 
       ],
       "DownstreamPathTemplate": "/api/customer",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 3000
+          "Host": "vehicletrackingcustomerapi20191110041436.azurewebsites.net",
+          "Port": 443
         }
       ]
     },
@@ -25,11 +25,11 @@
 
       ],
       "DownstreamPathTemplate": "/api/vehicle/{customerId}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 4000
+          "Host": "hvehicletrackingvehicleapi20191110042845.azurewebsites.net",
+          "Port": 443
         }
       ]
     },
@@ -40,11 +40,11 @@
 
       ],
       "DownstreamPathTemplate": "/api/vehicleping/{customerId}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 2000
+          "Host": "vehicletrackingvehicleping-appservice.azurewebsites.net",
+          "Port": 443
         }
       ]
     }

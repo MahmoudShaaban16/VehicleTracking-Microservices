@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using VehicleTracking.Core;
 using VehicleTracking.VehiclePing.Service.Repositories;
 using VehicleTracking.VehiclePing.Service.Services;
 
@@ -35,6 +36,7 @@ namespace VehicleTracking.VehiclePing.API
             services.AddSingleton<IVehiclePingRepository>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
             services.AddScoped<IPingService, PingService>();
             services.AddMediatR(Assembly.GetEntryAssembly());
+            services.AddRabbitMq(Configuration);
         }
         private static async Task<VehiclePingRepository> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
         {

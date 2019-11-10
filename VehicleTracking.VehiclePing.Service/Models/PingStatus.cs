@@ -6,7 +6,8 @@ namespace VehicleTracking.VehiclePing.Service.Models
 {
     public enum PingStatus
     {
-        Connected,
-        Disconnected
+        
+        Disconnected,
+        Connected
     }
 }
