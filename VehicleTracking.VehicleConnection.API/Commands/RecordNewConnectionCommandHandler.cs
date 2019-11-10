@@ -19,7 +19,7 @@ namespace VehicleTracking.VehicleConnection.API.Commands
         }
         public async Task<RecordNewConnectionCommandResult> Handle(RecordNewConnectionCommand request, CancellationToken cancellationToken)
         {
-            await _vehicleConnectionRepository.AddVehicleAsync(new Models.VehicleConnection() { Id = Guid.NewGuid().ToString(), VehicleId = request.VehicleId, ConnectionDate = DateTime.Now });
+            await _vehicleConnectionRepository.AddVehicleConnectionAsync(new Models.VehicleConnection() { Id = Guid.NewGuid().ToString(), VehicleId = request.VehicleId, ConnectionDate = DateTime.Now });
             await _busClient.PublishAsync(new ConnectionSentByVehicleEvent() { DateCreated=DateTime.Now,Id=Guid.NewGuid(),VehicleId=request.VehicleId,VehicleIP=request.VehicleIP });
             return new RecordNewConnectionCommandResult();
         }

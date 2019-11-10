@@ -1,0 +1,52 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000"
+  },
+  "ReRoutes": [
+    {
+      "UpstreamPathTemplate": "/api/customer/",
+      "UpstreamHttpMethod": [
+        "Get"
+
+      ],
+      "DownstreamPathTemplate": "/api/customer",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 3000
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/vehicle/{customerId}",
+      "UpstreamHttpMethod": [
+        "Get"
+
+      ],
+      "DownstreamPathTemplate": "/api/vehicle/{customerId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4000
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/vehicleStatus/{customerId}",
+      "UpstreamHttpMethod": [
+        "Get"
+
+      ],
+      "DownstreamPathTemplate": "/api/vehicleping/{customerId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 2000
+        }
+      ]
+    }
+  ]
+}

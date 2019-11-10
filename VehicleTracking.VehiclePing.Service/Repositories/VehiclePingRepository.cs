@@ -25,16 +25,15 @@ namespace VehicleTracking.VehiclePing.Service.Repositories
 
         public async Task<List<models.VehiclePing>> GetByAsync(int vehicleId)
         {
-            var query = this._container.GetItemQueryIterator<models.VehiclePing>(new QueryDefinition($" SELECT * FROM c where vehicleId={vehicleId}"));
-            List<models.VehiclePing> results = new List<models.VehiclePing>();
+            var query = this._container.GetItemQueryIterator<models.VehiclePing>(new QueryDefinition($" SELECT * FROM c"));
+            List<models.VehiclePing> pingRequests = new List<models.VehiclePing>();
             while (query.HasMoreResults)
             {
                 var response = await query.ReadNextAsync();
-
-                results.AddRange(response.ToList());
+                pingRequests.AddRange(response.Where(p=>p.VehicleId==vehicleId).ToList());
             }
 
-            return results;
+            return pingRequests;
         }
     }
 }

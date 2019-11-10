@@ -47,7 +47,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VehiclePing", "VehiclePing"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleTracking.VehiclePing.API", "VehicleTracking.VehiclePing.API\VehicleTracking.VehiclePing.API.csproj", "{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleTracking.VehiclePing.Service", "VehicleTracking.VehiclePing.Service\VehicleTracking.VehiclePing.Service.csproj", "{D03FD319-8094-4600-93ED-8FF1B22464E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleTracking.VehiclePing.Service", "VehicleTracking.VehiclePing.Service\VehicleTracking.VehiclePing.Service.csproj", "{D03FD319-8094-4600-93ED-8FF1B22464E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIGateways", "APIGateways", "{72075EC1-8556-44CA-BA88-E32F74FD2C62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleTracking.ApiGateway.Web", "VehicleTracking.ApiGateway.Web\VehicleTracking.ApiGateway.Web.csproj", "{FBB27A57-0656-47F8-AC1E-46E9FCC7A259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleTracking.VehiclePing.Simulation.AzureFunction", "VehicleTracking.VehiclePing.Simulation.AzureFunction\VehicleTracking.VehiclePing.Simulation.AzureFunction.csproj", "{AC8268B5-2B43-4F69-B5EE-442AB04C23DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +113,14 @@ Global
 		{D03FD319-8094-4600-93ED-8FF1B22464E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D03FD319-8094-4600-93ED-8FF1B22464E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D03FD319-8094-4600-93ED-8FF1B22464E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB27A57-0656-47F8-AC1E-46E9FCC7A259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB27A57-0656-47F8-AC1E-46E9FCC7A259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB27A57-0656-47F8-AC1E-46E9FCC7A259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB27A57-0656-47F8-AC1E-46E9FCC7A259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8268B5-2B43-4F69-B5EE-442AB04C23DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8268B5-2B43-4F69-B5EE-442AB04C23DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8268B5-2B43-4F69-B5EE-442AB04C23DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8268B5-2B43-4F69-B5EE-442AB04C23DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +147,9 @@ Global
 		{7B61844C-F3A4-44C8-AB03-32DA71D8FAB9} = {A709E415-AF41-47D5-8D6B-262B57DC274A}
 		{2017F63A-45F5-4EDD-BDFA-05DDCE137FD2} = {7B61844C-F3A4-44C8-AB03-32DA71D8FAB9}
 		{D03FD319-8094-4600-93ED-8FF1B22464E3} = {7B61844C-F3A4-44C8-AB03-32DA71D8FAB9}
+		{72075EC1-8556-44CA-BA88-E32F74FD2C62} = {2711EABD-BB60-444C-BF1A-0CA62F5AEC69}
+		{FBB27A57-0656-47F8-AC1E-46E9FCC7A259} = {72075EC1-8556-44CA-BA88-E32F74FD2C62}
+		{AC8268B5-2B43-4F69-B5EE-442AB04C23DF} = {7B61844C-F3A4-44C8-AB03-32DA71D8FAB9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D963AC7-AA8D-4C28-B4E2-DCD44BB01C01}

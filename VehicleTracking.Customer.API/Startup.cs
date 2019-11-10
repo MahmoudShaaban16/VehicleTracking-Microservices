@@ -15,31 +15,41 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using VehicleTracking.Customer.API.Infrastructure.EF;
+using VehicleTracking.Customer.API.Repositories;
 
 namespace VehicleTracking.Customer.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration,IHostingEnvironment environment)
         {
+            Environment = environment;
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
-
+        public IHostingEnvironment Environment { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddDbContext<CustomerContext>(options =>
             {
-                options.UseSqlServer(Configuration["CustomersConnectionString"],
+                if (Environment.IsDevelopment())
+                {
+                    options.UseSqlServer(Configuration["CustomersConnectionString"],
                     sqlServerOptionsAction: sqlOptions =>
                     {
                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
-                      
+
                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                     });
+                }
+                else
+                {
+                    options.UseInMemoryDatabase(databaseName: "VehiclesDb");
+                }
 
             });
             services.AddMediatR(Assembly.GetEntryAssembly());
@@ -55,6 +65,7 @@ namespace VehicleTracking.Customer.API
                 });
             });
 
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,12 +75,7 @@ namespace VehicleTracking.Customer.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
+            
             app.UseMvc();
         }
     }

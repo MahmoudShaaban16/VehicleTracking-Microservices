@@ -25,7 +25,7 @@ namespace VehicleTracking.VehiclePing.API.Queries
                 pingQueryResult.VehiclePingModel.PingStatus = Service.Models.PingStatus.Disconnected;
                 
             }
-            else if(DateTime.Compare(ping.PingDate,DateTime.Now)==0)
+            else if((DateTime.Now-ping.PingDate).TotalMinutes<=2)
             {
                 pingQueryResult.VehiclePingModel = ping;
             }

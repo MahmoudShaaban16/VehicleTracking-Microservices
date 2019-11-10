@@ -17,7 +17,7 @@ namespace VehicleTracking.VehicleConnection.API.Repositories
         {
             this._container = dbClient.GetContainer(databaseName, containerName);
         }
-        public async Task AddVehicleAsync(models.VehicleConnection vehicleConnection)
+        public async Task AddVehicleConnectionAsync(models.VehicleConnection vehicleConnection)
         {
             await this._container.CreateItemAsync<models.VehicleConnection>(vehicleConnection, new PartitionKey(vehicleConnection.Id));
         }

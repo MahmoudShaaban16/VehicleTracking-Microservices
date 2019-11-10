@@ -22,7 +22,7 @@ namespace VehicleTracking.VehiclePing.API.Controllers
 
         // GET Vehicles Ping status by Vehicle Id
         [HttpGet]
-        public async Task<ActionResult> Post(int vehicleId)
+        public async Task<ActionResult> Get(int vehicleId)
         {
             var getVehicleStatusQuery = new GetVehicleStatusQuery() {VehicleId=vehicleId};
             var result = await _mediatorBus.Send(getVehicleStatusQuery);

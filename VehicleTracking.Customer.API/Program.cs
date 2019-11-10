@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Serilog;
@@ -30,8 +31,8 @@ namespace VehicleTracking.Customer.API
             try
             {
                  var host = BuildWebHost(configuration, args);
-
                 
+                // adding SQL db migration and db seed
                 host.MigrateDbContext<CustomerContext>((context, services) =>
                 {
                     var logger = (ILogger<CustomerContextSeed>)services.GetService(typeof(ILogger<CustomerContextSeed>));
@@ -39,9 +40,17 @@ namespace VehicleTracking.Customer.API
                         .SeedAsync(context, logger)
                         .Wait();
                 });
-              
+                // Adding Customers data seed for in memory database
+                using (var scope = host.Services.CreateScope())
+                {
+                   
+                    var services = scope.ServiceProvider;
+                    var context = services.GetRequiredService<CustomerContext>();
+                    CustomerContextInMemorySeed.Initialize(services);
+                }
 
-                
+
+
                 host.Run();
 
                 return 0;

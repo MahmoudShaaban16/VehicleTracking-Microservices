@@ -7,6 +7,6 @@ namespace VehicleTracking.VehicleConnection.API.Repositories
 {
     interface IVehicleConnectionRepository
     {
-        Task AddVehicleAsync(models.VehicleConnection vehicleConnection);
+        Task AddVehicleConnectionAsync(models.VehicleConnection vehicleConnection);
     }
 }

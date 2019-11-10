@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using VehicleTracking.Core;
 using VehicleTracking.VehicleConnection.API.Repositories;
 
 namespace VehicleTracking.VehicleConnection.API
@@ -33,6 +34,7 @@ namespace VehicleTracking.VehicleConnection.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IVehicleConnectionRepository>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
             services.AddMediatR(Assembly.GetEntryAssembly());
+            services.AddRabbitMq(Configuration);
         }
         private static async Task<VehicleConnectionRepository> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
         {
@@ -57,12 +59,7 @@ namespace VehicleTracking.VehicleConnection.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
+            
             app.UseMvc();
         }
     }
