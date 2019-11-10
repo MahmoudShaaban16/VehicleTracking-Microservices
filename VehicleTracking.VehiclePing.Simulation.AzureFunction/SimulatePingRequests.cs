@@ -37,7 +37,7 @@ namespace VehicleTracking.VehiclePing.Simulation.AzureFunction
             }
             catch(Exception ex)
             {
-                log.LogError("An error while creating random vehicle ping request")
+                log.LogError("An error while creating random vehicle ping request");
             }
             
 
