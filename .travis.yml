@@ -5,8 +5,8 @@ script:
  - dotnet restore
  - dotnet build
  - cd VehicleTracking.Vehicle.API.UnitTesting && dotnet test
- - cd VehicleTracking.Customer.API.UnitTest && dotnet test
- - cd VehicleTracking.VehicleConnection.API.UnitTesting && dotnet test
- - cd VehicleTracking.Customer.API.IntegrationTesting && dotnet test
- - cd VehicleTracking.Vehicle.API.IntegrationTesting && dotnet test
- - cd VehicleTracking.VehicleConnection.API.IntegrationTesting && dotnet test
+ - cd ../VehicleTracking.Customer.API.UnitTest && dotnet test
+ - cd ../VehicleTracking.VehicleConnection.API.UnitTesting && dotnet test
+ - cd ../VehicleTracking.Customer.API.IntegrationTesting && dotnet test
+ - cd ../VehicleTracking.Vehicle.API.IntegrationTesting && dotnet test
+ - cd ../VehicleTracking.VehicleConnection.API.IntegrationTesting && dotnet test
