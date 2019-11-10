@@ -25,6 +25,7 @@ namespace VehicleTracking.ApiGateway.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot(_configuration);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,7 +36,13 @@ namespace VehicleTracking.ApiGateway.Web
                 app.UseDeveloperExceptionPage();
             }
 
-          
+            app.UseCors
+                   (b => b
+                       .AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowCredentials()
+                   );
             app.UseOcelot().Wait();
 
         }

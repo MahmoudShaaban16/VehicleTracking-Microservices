@@ -28,18 +28,18 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "hvehicletrackingvehicleapi20191110042845.azurewebsites.net",
+          "Host": "vehicletrackingvehicleapi20191110042845.azurewebsites.net",
           "Port": 443
         }
       ]
     },
     {
-      "UpstreamPathTemplate": "/api/vehicleStatus/{customerId}",
+      "UpstreamPathTemplate": "/api/vehicleStatus/{vehicleId}",
       "UpstreamHttpMethod": [
         "Get"
 
       ],
-      "DownstreamPathTemplate": "/api/vehicleping/{customerId}",
+      "DownstreamPathTemplate": "/api/vehicleping/{vehicleId}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {

@@ -20,7 +20,7 @@ namespace VehicleTracking.Vehicle.API.Queries
         {
             List<Vehicle.API.Models.Vehicle> vehicles = _vehicleRepository.Get(request.CustomerId);
             List<VehicleViewModel> vehicleVMs = new List<VehicleViewModel>();
-            vehicles.ForEach(v => vehicleVMs.Add(new VehicleViewModel() { VehicleNumber = v.VehicleNumber, RegNumbr = v.RegNumber }));
+            vehicles.ForEach(v => vehicleVMs.Add(new VehicleViewModel() { VehicleNumber = v.VehicleNumber, RegNumbr = v.RegNumber,Id=v.Id }));
             return new GetVehiclesByCustomerQueryResult() { Vehicles = vehicleVMs };
         }
     }
