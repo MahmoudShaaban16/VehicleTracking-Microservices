@@ -8,7 +8,7 @@ namespace VehicleTracking.Vehicle.API.Queries
 {
     public class GetVehiclesByCustomerQuery: IRequest<GetVehiclesByCustomerQueryResult>
     {
-        public int CustomerId { get; internal set; }
+        public int CustomerId { get;  set; }
        
     }
 }

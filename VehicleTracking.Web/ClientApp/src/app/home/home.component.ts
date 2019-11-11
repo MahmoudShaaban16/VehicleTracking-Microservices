@@ -37,14 +37,14 @@ export class HomeComponent {
                     else v.status = 'Disconnected';
 
                     if (v.status === status) {
-                        console.log(v.status === status);
+                       
                         this.filteredVehicles.push(v);
                     }
                 });
             });
             
 
-            console.log(this.filteredVehicles);
+           
         });
     }
 }
