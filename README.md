@@ -42,6 +42,8 @@ We are going to develop an application that keeps tracking of customer informati
 * Ocelot  (API Gateway)
 * RawRabbit  (Message Queue)
 * Microsoft Azure Function
+* Azure Cosmos DB (for connections and ping requests)
+* Microsoft SQL Server (for customers and vehicles data)
 * Angular (SPA)
 
 
